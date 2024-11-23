@@ -129,22 +129,29 @@ const Banner = () => {
 
         {/* Subtitle Roles */}
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-6 text-lg md:text-base font-bold bg-yellow-400 text-black px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg z-30"
-          animate={{ y: [0, -5, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          {["DATA SCIENTIST", "PHOTOGRAPHER", "TABLE TENNIS PLAYER"].map(
-            (role, idx) => (
-              <motion.h2
-                key={idx}
-                className="tracking-[2px] md:tracking-[4px] hover:text-black transition-all"
-                whileHover={{ scale: 1.1 }}
-              >
-                {role}
-              </motion.h2>
-            )
-          )}
-        </motion.div>
+  className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mt-4 text-sm md:text-base font-bold bg-yellow-400 text-black px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg relative"
+  animate={{ y: [0, -5, 0] }}
+  transition={{ duration: 2, repeat: Infinity }}
+  style={{
+    maxWidth: "90%", // Restrict width for small screens
+    flexWrap: "wrap", // Allow wrapping for small screens
+    wordBreak: "break-word", // Prevent overflow of long text
+  }}
+>
+  {["DATA SCIENTIST", "PHOTOGRAPHER", "TABLE TENNIS PLAYER"].map((role, idx) => (
+    <motion.h2
+      key={idx}
+      className="tracking-[1px] md:tracking-[2px] hover:text-black transition-all px-2 md:px-4"
+      whileHover={{ scale: 1.1 }}
+      style={{
+        fontSize: "clamp(12px, 3vw, 16px)", // Responsive font size
+        textAlign: "center",
+      }}
+    >
+      {role}
+    </motion.h2>
+  ))}
+</motion.div>
       </div>
 
       {/* Sidebar Menu */}

@@ -222,175 +222,179 @@ const CarDesign = () => {
 
 {/* Modeling Approach Section */}
 <div className="container mx-auto py-12 px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Modeling Approach</h2>
+  <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
+    Modeling Approach
+  </h2>
 
-          {/* Tree-Like Hierarchical Layout */}
-          <div className="relative flex flex-col items-start">
-            {/* Preprocessing Pipeline */}
-            <div className="flex items-start mb-20">
-              <div className="bg-blue-500 text-white text-xl font-bold px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Preprocessing Pipeline
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">
-                  Before training the models, a preprocessing pipeline was developed to ensure data consistency and improve the model's generalization ability:
-                </p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    <strong>Image Resizing:</strong> Resized all images to <strong>1280x850 pixels</strong>.
-                  </li>
-                  <li>
-                    <strong>Data Augmentation:</strong> Applied rotations, brightness/contrast adjustments, flips, and cropping.
-                  </li>
-                  <li>
-                    <strong>Normalization:</strong> Normalized pixel values and subtracted channel-wise mean and standard deviation.
-                  </li>
-                  <li>
-                    <strong>Keypoint Label Encoding:</strong> Normalized keypoint coordinates relative to image dimensions.
-                  </li>
-                </ul>
-              </div>
-            </div>
+  {/* Tree-Like Hierarchical Layout */}
+  <div className="relative flex flex-col items-start space-y-12 md:space-y-20">
+    {/* Preprocessing Pipeline */}
+    <div className="flex flex-col md:flex-row items-start">
+      <div className="bg-blue-500 text-white text-lg md:text-xl font-bold px-4 py-2 md:px-6 md:py-3 rounded-md shadow-lg w-full md:w-60 text-center flex-shrink-0">
+        Preprocessing Pipeline
+      </div>
+      <div className="h-1 md:h-auto w-full md:w-1 bg-gray-500 mx-4 md:mx-8"></div>
+      <div className="text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">
+          Before training the models, a preprocessing pipeline was developed to ensure data consistency and improve the model's generalization ability:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong>Image Resizing:</strong> Resized all images to <strong>1280x850 pixels</strong>.
+          </li>
+          <li>
+            <strong>Data Augmentation:</strong> Applied rotations, brightness/contrast adjustments, flips, and cropping.
+          </li>
+          <li>
+            <strong>Normalization:</strong> Normalized pixel values and subtracted channel-wise mean and standard deviation.
+          </li>
+          <li>
+            <strong>Keypoint Label Encoding:</strong> Normalized keypoint coordinates relative to image dimensions.
+          </li>
+        </ul>
+      </div>
+    </div>
 
-            {/* Model Architecture */}
-            <div className="flex items-start mb-20">
-              <div className="bg-green-500 text-white font-bold text-xl px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Model Architecture
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">
-                  A two-task deep learning pipeline combining CNNs and transformers:
-                </p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    <strong>ResNet-34:</strong> Extracted spatial features for bounding box prediction.
-                    <ul className="list-disc ml-6 mt-2">
-                      <li>
-                        Output: Bounding box coordinates (<code>x_min</code>, <code>y_min</code>, <code>width</code>, <code>height</code>).
-                      </li>
-                      <li>Pretrained on ImageNet for initialization.</li>
-                    </ul>
-                  </li>
-                  <li className="mt-4">
-                    <strong>Vision Transformer (ViT):</strong> Extracted global features for keypoint detection.
-                    <ul className="list-disc ml-6 mt-2">
-                      <li>Output: 50 keypoints (<code>x</code>, <code>y</code> coordinates).</li>
-                      <li>Attention mechanism to capture spatial relationships.</li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
+    {/* Model Architecture */}
+    <div className="flex flex-col md:flex-row items-start">
+      <div className="bg-green-500 text-white font-bold text-lg md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-md shadow-lg w-full md:w-60 text-center flex-shrink-0">
+        Model Architecture
+      </div>
+      <div className="h-1 md:h-auto w-full md:w-1 bg-gray-500 mx-4 md:mx-8"></div>
+      <div className="text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">
+          A two-task deep learning pipeline combining CNNs and transformers:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong>ResNet-34:</strong> Extracted spatial features for bounding box prediction.
+            <ul className="list-disc ml-6 mt-2">
+              <li>Output: Bounding box coordinates (<code>x_min</code>, <code>y_min</code>, <code>width</code>, <code>height</code>).</li>
+              <li>Pretrained on ImageNet for initialization.</li>
+            </ul>
+          </li>
+          <li className="mt-4">
+            <strong>Vision Transformer (ViT):</strong> Extracted global features for keypoint detection.
+            <ul className="list-disc ml-6 mt-2">
+              <li>Output: 50 keypoints (<code>x</code>, <code>y</code> coordinates).</li>
+              <li>Attention mechanism to capture spatial relationships.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
 
- {/* Loss Functions */}
- <div className="flex items-start mb-20">
-              <div className="bg-red-500 text-white text-xl font-bold px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Loss Functions
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">Custom loss functions were used for the dual-task outputs:</p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    <strong>IoU Loss:</strong> For bounding box predictions.
-                  </li>
-                  <li>
-                    <strong>Mean Squared Error (MSE):</strong> For keypoint regression.
-                  </li>
-                  <li>
-                    <strong>Weighted Loss Combination:</strong>{" "}
-                    <code>Loss = λ1 * IoU + λ2 * MSE</code>, where <code>λ1</code> and{" "}
-                    <code>λ2</code> are hyperparameters tuned via grid search.
-                  </li>
-                </ul>
-              </div>
-            </div>
+    {/* Loss Functions */}
+    <div className="flex flex-col md:flex-row items-start">
+      <div className="bg-red-500 text-white text-lg md:text-xl font-bold px-4 py-2 md:px-6 md:py-3 rounded-md shadow-lg w-full md:w-60 text-center flex-shrink-0">
+        Loss Functions
+      </div>
+      <div className="h-1 md:h-auto w-full md:w-1 bg-gray-500 mx-4 md:mx-8"></div>
+      <div className="text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">Custom loss functions were used for the dual-task outputs:</p>
+        <ul className="list-disc list-inside space-y-2">
+          <li><strong>IoU Loss:</strong> For bounding box predictions.</li>
+          <li><strong>Mean Squared Error (MSE):</strong> For keypoint regression.</li>
+          <li>
+            <strong>Weighted Loss Combination:</strong> <code>Loss = λ1 * IoU + λ2 * MSE</code>, where <code>λ1</code> and <code>λ2</code> are hyperparameters tuned via grid search.
+          </li>
+        </ul>
+      </div>
+    </div>
 
-            {/* Training Strategy */}
-            <div className="flex items-start mb-20">
-              <div className="bg-yellow-500 text-white text-xl font-bold px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Training Strategy
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">
-                  The training process was designed to ensure maximum performance:
-                </p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    <strong>Optimizer:</strong> Adam optimizer with a learning rate of 0.001.
-                  </li>
-                  <li>
-                    <strong>Batch Size:</strong> 16 images per batch.
-                  </li>
-                  <li>
-                    <strong>Scheduler:</strong> Cosine annealing with warm restarts.
-                  </li>
-                  <li>
-                    <strong>Epochs:</strong> Trained for 50 epochs with early stopping.
-                  </li>
-                  <li>
-                    <strong>Cross-Validation:</strong> k-fold validation (k=5).
-                  </li>
-                </ul>
-              </div>
-            </div>
+    {/* Training Strategy */}
+    <div className="flex flex-col md:flex-row items-start">
+      <div className="bg-yellow-500 text-white text-lg md:text-xl font-bold px-4 py-2 md:px-6 md:py-3 rounded-md shadow-lg w-full md:w-60 text-center flex-shrink-0">
+        Training Strategy
+      </div>
+      <div className="h-1 md:h-auto w-full md:w-1 bg-gray-500 mx-4 md:mx-8"></div>
+      <div className="text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">
+          The training process was designed to ensure maximum performance:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li><strong>Optimizer:</strong> Adam optimizer with a learning rate of 0.001.</li>
+          <li><strong>Batch Size:</strong> 16 images per batch.</li>
+          <li><strong>Scheduler:</strong> Cosine annealing with warm restarts.</li>
+          <li><strong>Epochs:</strong> Trained for 50 epochs with early stopping.</li>
+          <li><strong>Cross-Validation:</strong> k-fold validation (k=5).</li>
+        </ul>
+      </div>
+    </div>
 
-            {/* Evaluation Metrics */}
-            <div className="flex items-start">
-              <div className="bg-purple-500 text-white text-xl font-bold px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Evaluation Metrics
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">The following metrics were used to evaluate the model:</p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    <strong>Mean Average Precision (mAP):</strong> Evaluated bounding box
-                    predictions.
-                  </li>
-                  <li>
-                    <strong>Keypoint Accuracy:</strong> Percentage of keypoints predicted within a
-                    5-pixel radius.
-                  </li>
-                  <li>
-                    <strong>Loss Curves:</strong> Monitored training and validation loss trends.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+    {/* Evaluation Metrics */}
+    <div className="flex flex-col md:flex-row items-start">
+      <div className="bg-purple-500 text-white text-lg md:text-xl font-bold px-4 py-2 md:px-6 md:py-3 rounded-md shadow-lg w-full md:w-60 text-center flex-shrink-0">
+        Evaluation Metrics
+      </div>
+      <div className="h-1 md:h-auto w-full md:w-1 bg-gray-500 mx-4 md:mx-8"></div>
+      <div className="text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">The following metrics were used to evaluate the model:</p>
+        <ul className="list-disc list-inside space-y-2">
+          <li><strong>Mean Average Precision (mAP):</strong> Evaluated bounding box predictions.</li>
+          <li><strong>Keypoint Accuracy:</strong> Percentage of keypoints predicted within a 5-pixel radius.</li>
+          <li><strong>Loss Curves:</strong> Monitored training and validation loss trends.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-        {/* Visualizations Section */}
-        <div className="container mx-auto py-12 px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Visualizations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 flex items-center justify-center h-[400px] rounded-lg overflow-hidden">
-              <Image
-                src="/assets/bounding-box.png"
-                alt="Bounding Box Placement"
-                layout="intrinsic"
-                width={1000}
-                height={800}
-                className="rounded-lg"
-              />
-            </div>
 
-            <div className="bg-gray-800 flex items-center justify-center h-[400px] rounded-lg overflow-hidden">
-              <Image
-                src="/assets/keypoints.png"
-                alt="Keypoint Predictions - Heatmap Example"
-                layout="intrinsic"
-                width={1000}
-                height={800}
-                className="rounded-lg"
-              />
-            </div>
-          </div>
-        </div>
+{/* Visualizations Section */}
+<div className="container mx-auto py-24 px-6">
+  <h2 className="text-4xl font-extrabold text-white mb-6">Visualizations</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+    {/* Bounding Box Visualization */}
+    <div className="rounded-lg overflow-hidden">
+      <div className="w-full h-[400px] md:h-[600px] flex items-center justify-center">
+        {/* Resized Canvas */}
+        <canvas
+          width="800" // Adjust canvas width
+          height="600" // Adjust canvas height
+          className="absolute w-full h-full"
+        ></canvas>
+        <Image
+          src="/assets/bounding-box.png"
+          alt="Bounding Box Placement"
+          layout="intrinsic"
+          width={1000}
+          height={800}
+          className="rounded-lg"
+        />
+      </div>
+      {/* Caption */}
+      <p className="text-center font-extrabold text-gray-300 text-lg mt-16">
+        <strong>Figure 1:</strong> Bounding Box Placement Visualization
+      </p>
+    </div>
+
+    {/* Keypoint Heatmap Visualization */}
+    <div className="rounded-lg overflow-hidden">
+      <div className="w-full h-[400px] md:h-[600px] flex items-center justify-center">
+        {/* Resized Canvas */}
+        <canvas
+          width="1000" // Adjust canvas width
+          height="800" // Adjust canvas height
+          className="absolute w-full h-full"
+        ></canvas>
+        <Image
+          src="/assets/keypoints.png"
+          alt="Keypoint Predictions - Heatmap Example"
+          layout="intrinsic"
+          width={1000}
+          height={800}
+          className="rounded-lg"
+        />
+      </div>
+      {/* Caption */}
+      <p className="text-center font-extrabold text-gray-300 text-lg mt-16">
+        <strong>Figure 2:</strong> 50 Design Keypoints Visualization
+      </p>
+    </div>
+  </div>
+</div>
+
 
 
 {/* Placeholder for Before-and-After Comparisons */}
@@ -510,18 +514,20 @@ const CarDesign = () => {
 {/* Placeholder for Additional Resources */}
 <div className="container mx-auto py-12 px-6">
   <h2 className="text-4xl font-extrabold text-white mb-6">Additional Resources</h2>
-  <div className="relative group bg-gray-800 flex flex-col items-center justify-center h-[400px] rounded-lg cursor-pointer overflow-hidden">
+  <div className="relative group bg-gray-800 flex flex-col items-center justify-center rounded-lg cursor-pointer overflow-hidden">
     {/* Background Image */}
-    <Image
-      src="/assets/cars.jpg" // Replace with your actual image path
-      alt="GitHub Preview"
-      layout="fill"
-      objectFit="cover"
-      className="absolute inset-0 w-full h-full object-cover scale-125 group-hover:scale-100 transition-transform duration-500"
-    />
-    
+    <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px]">
+      <Image
+        src="/assets/cars.jpg" // Replace with your actual image path
+        alt="GitHub Preview"
+        layout="fill"
+        objectFit="cover"
+        className="absolute inset-0 w-full h-full object-cover scale-125 group-hover:scale-100 transition-transform duration-500"
+      />
+    </div>
+
     {/* In Progress Icon */}
-    <div className="absolute top-4 left-4 bg-yellow-500 text-black text-sm font-bold px-4 py-1 rounded-md shadow-lg flex items-center gap-2">
+    <div className="absolute top-4 left-4 bg-yellow-500 text-black text-xs sm:text-sm font-bold px-2 sm:px-4 py-1 rounded-md shadow-lg flex items-center gap-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-4 w-4"
@@ -541,21 +547,20 @@ const CarDesign = () => {
 
     {/* Overlay */}
     <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center transition-opacity duration-500 opacity-0 group-hover:opacity-100">
-      <p className="text-xl font-bold text-gray-300 text-center mb-4">
+      <p className="text-base sm:text-lg lg:text-xl font-bold text-gray-300 text-center mb-4">
         Explore the full project, detailed codebase, and additional insights on GitHub!
       </p>
       <a
         href="https://github.com/ammadsohail99/Car-Design-Difference-Project" // Replace with your GitHub repo link
         target="_blank"
         rel="noopener noreferrer"
-        className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-800 text-white text-lg font-bold rounded-md hover:scale-105 transform transition-transform duration-300"
+        className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-indigo-800 text-white text-sm sm:text-lg font-bold rounded-md hover:scale-105 transform transition-transform duration-300"
       >
         Visit GitHub Repository
       </a>
     </div>
   </div>
 </div>
-
 
 
 

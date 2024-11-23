@@ -334,7 +334,7 @@ const MovieIMDB = () => {
     ].map((movie, index) => (
       <div
         key={index}
-        className="relative group w-full h-[500px] bg-black rounded-lg overflow-hidden cursor-pointer"
+        className="relative group w-full h-[700px] bg-black rounded-lg overflow-hidden cursor-pointer"
       >
         {/* Movie Poster */}
         <div
