@@ -107,7 +107,7 @@ const Timeline = () => {
 
         {/* Foundation Label */}
         <motion.span
-          className="absolute left-[-200px] top-1/16 transform -translate-y-1/2 text-blue-100 font-bold text-2xl"
+          className="absolute left-[-160px] top-1/16 transform -translate-y-1/2 text-blue-100 font-bold text-xl"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: -5 }}
           transition={{ duration: 0.5 }}
@@ -117,7 +117,7 @@ const Timeline = () => {
 
         {/* Current Label */}
         <motion.span
-          className="absolute right-[-155px] top-1/16 transform -translate-y-1/2 text-blue-100 font-bold text-2xl"
+          className="absolute right-[-115px] top-1/16 transform -translate-y-1/2 text-blue-100 font-bold text-xl"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: -5 }}
           transition={{ duration: 0.5 }}
