@@ -10,11 +10,12 @@ const Contact = () => {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrMsg(""); // Reset error message
     setSuccessMsg(""); // Reset success message
-  
+
+    // Validation
     if (!username) {
       setErrMsg("Enter your Name");
       return;
@@ -27,14 +28,14 @@ const Contact = () => {
       setErrMsg("Enter your Message");
       return;
     }
-  
+
     try {
       const response = await axios.post("http://localhost:5000/send-email", {
         username,
         email,
         message,
       });
-  
+
       if (response.status === 200) {
         setSuccessMsg(
           `Hello dear ${username}, Thank you for your Message. I will get back to you soon.`
@@ -42,11 +43,12 @@ const Contact = () => {
         setUsername(""); // Clear form inputs
         setEmail("");
         setMessage("");
+        setErrMsg(""); // Clear any previous error messages
       }
     } catch (error) {
       setErrMsg("Failed to send the message. Please try again later.");
     }
-  };  
+  };
 
   return (
     <section
