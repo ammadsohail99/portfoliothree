@@ -87,17 +87,6 @@ const Testimonial = () => {
                 At, facilis!
               </p>
             </div>
-            <div>
-              <p className="text-xl text-textColor text-center leading-8">
-                <span className="text-white">Amazon company CEO -</span> Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-                doloribus sed asperiores commodi earum consectetur dolorem,
-                eligendi animi minus. Reprehenderit laboriosam ipsa quia
-                dignissimos voluptatum aliquid et repudiandae laborum impedit
-                perferendis quis, sapiente doloribus eaque maxime nemo facere?
-                At, facilis!
-              </p>
-            </div>
           </Slider>
         </div>
       </div>

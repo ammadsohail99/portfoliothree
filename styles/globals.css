@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modica:wght@900&display=swap'); /* Add Modica Ultra */
 
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide slick-dots from the carousel */
+.slick-dots {
+  display: none !important;
+}
