@@ -44,7 +44,7 @@ const Design = () => {
                 quantity: 4,
               },
               repulse: {
-                distance: 200,
+                distance: 100, // Reduced repulse distance for small screens
                 duration: 0.4,
               },
             },
@@ -55,7 +55,7 @@ const Design = () => {
             },
             links: {
               color: "#ffffff",
-              distance: 120,
+              distance: 100, // Reduced link distance for small screens
               enable: true,
               opacity: 0.5,
               width: 1,
@@ -64,30 +64,30 @@ const Design = () => {
               enable: true,
             },
             move: {
-              direction: "none", // Random directions
+              direction: "none",
               enable: true,
               outModes: {
-                default: "bounce", // Particles bounce off edges
+                default: "bounce",
               },
-              random: false, // Disable random speed for consistency
-              speed: 2, // Set consistent speed
-              straight: false, // Disable straight-line movement
+              random: false,
+              speed: 1.5, // Slightly slower speed for better visibility on small screens
+              straight: false,
             },
             number: {
               density: {
                 enable: true,
-                area: 1000,
+                area: window.innerWidth < 640 ? 500 : 1000, // Adjust particle density for small screens
               },
-              value: 90,
+              value: window.innerWidth < 640 ? 50 : 90, // Reduce particle count for small screens
             },
             opacity: {
-              value: 0.5,
+              value: 0.4, // Reduced opacity for less clutter on smaller screens
             },
             shape: {
               type: "circle",
             },
             size: {
-              value: { min: 3, max: 5 }, // Adjusted size range
+              value: window.innerWidth < 640 ? { min: 2, max: 4 } : { min: 3, max: 5 }, // Smaller particles on small screens
             },
           },
           detectRetina: true,
