@@ -25,6 +25,7 @@
     "react-slick": "^0.29.0",
     "react-tsparticles": "^2.8.0",
     "slick-carousel": "^1.8.1",
+    "three": "^0.170.0",
     "tsparticles": "^2.8.0"
   },
   "devDependencies": {

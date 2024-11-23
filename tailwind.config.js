@@ -16,11 +16,17 @@ module.exports = {
         "contact-image": "url('/assets/contact.jpg')",
       },
       colors: {
-        designColor: "#F7D449",
-        textColor: "#aeaeae",
+        designColor: "#F7D449", // Yellow color for accents
+        textColor: "#aeaeae", // Gray text color
+        glowBlue: "#1DA1F2", // For glowing animations
+        glowPink: "#FF69B4",
+        glowYellow: "#FFD700",
       },
       boxShadow: {
         cardShadow: "0px 0px 5px 10px rgba(0,0,0,0.10)",
+        glowBlue: "0 0 10px 2px rgba(29, 161, 242, 0.7)", // Glowing Blue Shadow
+        glowPink: "0 0 10px 2px rgba(255, 105, 180, 0.7)", // Glowing Pink Shadow
+        glowYellow: "0 0 10px 2px rgba(255, 215, 0, 0.7)", // Glowing Yellow Shadow
       },
       keyframes: {
         fadeIn: {
@@ -65,9 +71,19 @@ module.exports = {
           "50%": { boxShadow: "0 0 20px 4px rgba(0, 0, 255, 0.8)" },
           "100%": { boxShadow: "0 0 10px 2px rgba(0, 0, 255, 0.6)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        spinGradient: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
+        spinSlow: "spin 10s linear infinite",
+        spinFast: "spin 1.5s linear infinite", // Fast spin for the spinners
         slideIn: "slideIn 0.7s ease-in-out",
         lineGlow: "lineGlow 2s linear infinite",
         pulse: "pulse 2s infinite",
@@ -77,6 +93,8 @@ module.exports = {
         fadeInRight: "fadeInRight 0.5s ease-out",
         hologram: "hologram 0.5s ease-in-out",
         glow: "glow 1.5s infinite ease-in-out",
+        float: "float 3s ease-in-out infinite", // Floating animation
+        spinGradient: "spinGradient 8s linear infinite", // Gradient spin animation
       },
     },
   },

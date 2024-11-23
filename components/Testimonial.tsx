@@ -1,94 +1,52 @@
-import React, { useState } from "react";
-import Slider from "react-slick";
+import React from "react";
 
 const Testimonial = () => {
-  const [dotActive, setDocActive] = useState(0);
-  const settings = {
-    dots: true,
-    infinite: true,
-    autoplay: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    beforeChange: (prev: any, next: any) => {
-      setDocActive(next);
-    },
+  const techStack = [
+    { name: "Python", icon: "/assets/python.png", size: 5 },
+    { name: "R", icon: "/assets/R_lang.png", size: 4 },
+    { name: "SQL", icon: "/assets/SQL.png", size: 5 },
+    { name: "Databricks", icon: "/assets/Databricks.png", size: 4 },
+    { name: "Microsoft Azure", icon: "/assets/Azure.png", size: 4 },
+    { name: "AWS", icon: "/assets/aws.png", size: 3 },
+    { name: "PowerBI", icon: "/assets/pbi.svg", size: 3 },
+    { name: "PySpark", icon: "/assets/Spark.png", size: 4 },
+    { name: "TensorFlow", icon: "/assets/Tensorflow.png", size: 3 },
+    { name: "PyTorch", icon: "/assets/Pytorch.png", size: 2 },
+    { name: "Scikit-Learn", icon: "/assets/Scikit_learn.png", size: 2 },
+  ];
 
-    appendDots: (dots: any) => (
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-50px",
-          left: "50%",
-          transform: "translate(-50%, 0)",
-        }}
-      >
-        <ul
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          {dots}
-        </ul>
-      </div>
-    ),
-    customPaging: (i: any) => (
-      <div
-        style={
-          i === dotActive
-            ? {
-                width: "12px",
-                height: "12px",
-                borderRadius: "50%",
-                cursor: "pointer",
-                border: "1px solid #F7D449",
-              }
-            : {
-                width: "12px",
-                height: "12px",
-                borderRadius: "50%",
-                cursor: "pointer",
-                border: "1px solid #aeaeae",
-              }
-        }
-      ></div>
-    ),
-  };
   return (
-    <section
-      id="testimonial"
-      className="text-white bg-[#0F1113] py-20 flex justify-center items-center"
-    >
-      <div className="w-[500px] md:w-[620px] h-60 px-4">
-        <div>
-          <Slider {...settings}>
-            <div>
-              <p className="text-xl text-textColor text-center leading-8">
-                <span className="text-white">Apple company CEO -</span> Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-                doloribus sed asperiores commodi earum consectetur dolorem,
-                eligendi animi minus. Reprehenderit laboriosam ipsa quia
-                dignissimos voluptatum aliquid et repudiandae laborum impedit
-                perferendis quis, sapiente doloribus eaque maxime nemo facere?
-                At, facilis!
-              </p>
-            </div>
-            <div>
-              <p className="text-xl text-textColor text-center leading-8">
-                <span className="text-white">Google company CTO -</span> Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-                doloribus sed asperiores commodi earum consectetur dolorem,
-                eligendi animi minus. Reprehenderit laboriosam ipsa quia
-                dignissimos voluptatum aliquid et repudiandae laborum impedit
-                perferendis quis, sapiente doloribus eaque maxime nemo facere?
-                At, facilis!
-              </p>
-            </div>
-          </Slider>
-        </div>
+    <section className="bg-gradient-to-br from-gray-900 via-black to-gray-800 min-h-[-90xh] flex flex-col justify-center items-center py-8 relative overflow-hidden">
+      {/* Title */}
+      <h2 className="text-4xl font-bold uppercase tracking-[5px] text-white mb-6 z-10">Tech Stack</h2>
+
+      {/* Glowing Background Dots */}
+      <div className="absolute inset-0">
+        <div className="w-[300px] h-[300px] bg-blue-600 opacity-30 rounded-full absolute top-[10%] left-[15%] blur-3xl animate-pulse"></div>
+        <div className="w-[200px] h-[200px] bg-pink-500 opacity-30 rounded-full absolute bottom-[15%] right-[20%] blur-3xl animate-pulse"></div>
+        <div className="w-[150px] h-[150px] bg-yellow-500 opacity-20 rounded-full absolute bottom-[10%] left-[40%] blur-3xl animate-pulse"></div>
+      </div>
+
+      {/* Floating Logos */}
+      <div className="relative w-full h-[500px] flex flex-wrap justify-center items-center z-10">
+        {techStack.map((tech, index) => (
+          <div
+            key={index}
+            className={`m-4 p-2 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 shadow-lg hover:shadow-2xl hover:scale-110 hover:brightness-150 transition-all duration-500 ease-in-out animate-float`}
+            style={{
+              width: `${tech.size * 3}rem`, // Dynamic size based on proficiency
+              height: `${tech.size * 3}rem`,
+              animationDelay: `${index * 0.2}s`, // Staggered float animation
+            }}
+            title={tech.name}
+          >
+            <img
+              src={tech.icon}
+              alt={tech.name}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

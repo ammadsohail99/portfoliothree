@@ -6,20 +6,17 @@ import BannerImg from "../public/assets/bg.jpg";
 
 const Design = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
-    // console.log(engine);
-
-    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
+    // Initialize tsParticles instance
     await loadFull(engine);
   }, []);
 
   const particlesLoaded = useCallback(
     async (container: Container | undefined) => {
-      // await console.log(container);
+      // Log loaded container if needed
     },
     []
   );
+
   return (
     <div className="w-full h-full bg-hero-image bg-cover relative">
       <Particles
@@ -67,14 +64,14 @@ const Design = () => {
               enable: true,
             },
             move: {
-              direction: "none",
+              direction: "none", // Random directions
               enable: true,
               outModes: {
-                default: "bounce",
+                default: "bounce", // Particles bounce off edges
               },
-              random: false,
-              speed: 2,
-              straight: false,
+              random: false, // Disable random speed for consistency
+              speed: 2, // Set consistent speed
+              straight: false, // Disable straight-line movement
             },
             number: {
               density: {
@@ -90,7 +87,7 @@ const Design = () => {
               type: "circle",
             },
             size: {
-              value: { min: 1, max: 5 },
+              value: { min: 3, max: 5 }, // Adjusted size range
             },
           },
           detectRetina: true,

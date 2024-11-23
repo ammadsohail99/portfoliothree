@@ -57,7 +57,7 @@ const Contact = () => {
     >
       <div className="w-full h-full bg-black bg-opacity-80 py-20">
         <div className="max-w-6xl h-full mx-auto flex flex-col gap-6 md:gap-12">
-          <h1 className="text-3xl font-thin tracking-widest uppercase text-center">
+          <h1 className="text-4xl font-extrabold tracking-widest uppercase text-center">
             Say Hello!
           </h1>
 
