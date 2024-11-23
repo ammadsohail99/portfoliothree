@@ -8,16 +8,23 @@ import Works from "../components/Works";
 import Testimonial from "../components/Testimonial";
 import Contact from "../components/Contact";
 import ScrollBtn from "../components/ScrollBtn";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className="font-bodyFont">
+      {/* Head for SEO and Icons */}
       <Head>
-        <title>Test Blog | New Horizon</title>
+        <title>Portfolio | Syed Ammad Sohail</title>
+        <meta
+          name="description"
+          content="Welcome to my portfolio! Explore my journey, projects, and achievements as a Data Scientist and Software Developer."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/smallLogo.ico" />
       </Head>
 
-      {/* Use next/script for GSAP */}
+      {/* GSAP Scripts */}
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
         strategy="beforeInteractive"
@@ -27,21 +34,21 @@ const Home: NextPage = () => {
         strategy="beforeInteractive"
       />
 
-      {/* Use next/script for Framer Motion */}
-      <Script
-        src="https://unpkg.com/framer-motion@10.12.16/dist/framer-motion.umd.js"
-        strategy="beforeInteractive"
-      />
-
-      <div className="font-bodyFont">
+      {/* Page Layout */}
+      <main>
         <Banner />
         <AboutMe />
         <Education />
         <Works />
         <Testimonial />
         <Contact />
-      </div>
+      </main>
+
+      {/* Scroll Button */}
       <ScrollBtn />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

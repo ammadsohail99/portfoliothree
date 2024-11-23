@@ -115,157 +115,151 @@ const MovieIMDB = () => {
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="ml-20 md:ml-24 p-6">
-        {/* Introduction Section */}
-        <div className="container mx-auto py-12 px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Introduction</h2>
-          <p className="text-xl text-gray-300">
-            This project leverages statistical modeling to predict IMDb ratings for upcoming
-            blockbuster movies. By analyzing data from 2,000+ movies, the model identifies key
-            factors influencing audience ratings and provides insights into future audience
-            preferences.
-          </p>
-        </div>
+{/* Main Content */}
+<div className="ml-16 md:ml-20 lg:ml-24 p-4 sm:p-6">
+  {/* Introduction Section */}
+  <div className="container mx-auto py-8 sm:py-12 px-4 sm:px-6">
+    <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center sm:text-left">
+      Introduction
+    </h2>
+    <p className="text-base sm:text-lg md:text-xl text-gray-300 text-center sm:text-left">
+      This project leverages statistical modeling to predict IMDb ratings for upcoming blockbuster movies. By analyzing data from over 2,000 movies, the model identifies key factors influencing audience ratings and provides insights into future audience preferences.
+    </p>
+  </div>
 
-        {/* Key Highlights Section */}
-        <div className="container mx-auto py-12 px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Key Highlights</h2>
-          <ul className="list-disc list-inside text-xl text-gray-300">
-            <li>
-              <strong>🎯 Purpose:</strong> To predict IMDb ratings for 12 major blockbusters releasing
-              in November 2023.
-            </li>
-            <li>
-              <strong>🔍 Technology:</strong> <a href="https://www.r-project.org/" className="text-blue-400 hover:underline">R</a> for statistical modeling, <a href="https://ggplot2.tidyverse.org/" className="text-blue-400 hover:underline">ggplot2</a> for visualization,
-              and advanced regression techniques for predictive accuracy.
-            </li>
-            <li>
-              <strong>📊 Results:</strong> Achieved low Mean Squared Error (MSE) for IMDb predictions,
-              with robust cross-validation metrics.
-            </li>
-            <li>
-              <strong>💡 Challenges:</strong> Tackled issues like heteroskedasticity, multicollinearity,
-              and skewed predictors while optimizing model complexity.
-            </li>
-          </ul>
-        </div>
+  {/* Key Highlights Section */}
+  <div className="container mx-auto py-8 sm:py-12 px-4 sm:px-6">
+    <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center sm:text-left">
+      Key Highlights
+    </h2>
+    <ul className="list-disc list-inside text-base sm:text-lg md:text-xl text-gray-300 space-y-4">
+      <li>
+        <strong>🎯 Purpose:</strong> To predict IMDb ratings for 12 major blockbusters releasing in November 2023.
+      </li>
+      <li>
+        <strong>🔍 Technology:</strong> <a href="https://www.r-project.org/" className="text-blue-400 hover:underline">R</a> for statistical modeling, <a href="https://ggplot2.tidyverse.org/" className="text-blue-400 hover:underline">ggplot2</a> for visualization, and advanced regression techniques for predictive accuracy.
+      </li>
+      <li>
+        <strong>📊 Results:</strong> Achieved low Mean Squared Error (MSE) for IMDb predictions, with robust cross-validation metrics.
+      </li>
+      <li>
+        <strong>💡 Challenges:</strong> Tackled issues like heteroskedasticity, multicollinearity, and skewed predictors while optimizing model complexity.
+      </li>
+    </ul>
+  </div>
 
-        {/* Dataset Section */}
-        <div className="container mx-auto py-12 px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Dataset</h2>
-          <p className="text-xl text-gray-300 mb-6">
-            The dataset consists of key features from 2,000+ movies, including:
-          </p>
-          <ul className="list-disc list-inside text-xl text-gray-300">
-            <li>IMDb ratings as the target variable.</li>
-            <li>Film characteristics: budget, duration, release date, etc.</li>
-            <li>Cast details: lead actors and IMDb star meter rankings.</li>
-            <li>Production details: director, distributor, cinematographer, etc.</li>
-            <li>Dummy variables for genres and maturity ratings.</li>
-          </ul>
-        </div>
+  {/* Dataset Section */}
+  <div className="container mx-auto py-8 sm:py-12 px-4 sm:px-6">
+    <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center sm:text-left">
+      Dataset
+    </h2>
+    <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 text-center sm:text-left">
+      The dataset consists of key features from over 2,000 movies, including:
+    </p>
+    <ul className="list-disc list-inside text-base sm:text-lg md:text-xl text-gray-300 space-y-4">
+      <li>IMDb ratings as the target variable.</li>
+      <li>Film characteristics: budget, duration, release date, etc.</li>
+      <li>Cast details: lead actors and IMDb star meter rankings.</li>
+      <li>Production details: director, distributor, cinematographer, etc.</li>
+      <li>Dummy variables for genres and maturity ratings.</li>
+    </ul>
+  </div>
 
 {/* Modeling Approach Section */}
-<div className="container mx-auto py-12 px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Modeling Approach</h2>
+<div className="container mx-auto py-12 px-4 sm:px-6">
+  <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center sm:text-left">
+    Modeling Approach
+  </h2>
 
-          <div className="relative flex flex-col items-start">
-            {/* Preprocessing Pipeline */}
-            <div className="flex items-start mb-20">
-              <div className="bg-blue-500 text-white text-xl font-bold px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Preprocessing Pipeline
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">
-                  Before training the model, data was preprocessed to ensure consistency:
-                </p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li><strong>Data Cleaning:</strong> Removed invalid entries and missing values.</li>
-                  <li><strong>Feature Engineering:</strong> Dummified categorical variables (genres, ratings).</li>
-                  <li><strong>Normalization:</strong> Applied Min-Max scaling for numeric predictors.</li>
-                  <li><strong>Outlier Handling:</strong> Detected and handled extreme values using Z-scores.</li>
-                </ul>
-              </div>
-            </div>
+  <div className="relative flex flex-col space-y-12">
+    {/* Preprocessing Pipeline */}
+    <div className="flex flex-col md:flex-row items-start mb-12 md:mb-20">
+      <div className="bg-blue-500 text-white text-lg sm:text-xl font-bold px-6 py-3 rounded-md shadow-lg text-center flex-shrink-0 w-full md:w-60 mb-6 md:mb-0">
+        Preprocessing Pipeline
+      </div>
+      <div className="h-1 md:h-auto md:w-1 bg-gray-500 mx-0 md:mx-8"></div>
+      <div className="text-base sm:text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">
+          Before training the model, data was preprocessed to ensure consistency:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li><strong>Data Cleaning:</strong> Removed invalid entries and missing values.</li>
+          <li><strong>Feature Engineering:</strong> Dummified categorical variables (genres, ratings).</li>
+          <li><strong>Normalization:</strong> Applied Min-Max scaling for numeric predictors.</li>
+          <li><strong>Outlier Handling:</strong> Detected and handled extreme values using Z-scores.</li>
+        </ul>
+      </div>
+    </div>
 
-            {/* Model Architecture */}
-            <div className="flex items-start mb-20">
-              <div className="bg-green-500 text-white font-bold text-xl px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Model Architecture
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">
-                  A robust linear regression model formed the backbone of this project, enhanced with:
-                </p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    <strong>Polynomial Regression:</strong> Captured non-linear relationships in predictors.
-                  </li>
-                  <li>
-                    <strong>Splines:</strong> Improved fit for variables like budget and star rankings.
-                  </li>
-                  <li>
-                    <strong>Interaction Terms:</strong> Explored dependencies between genres and budget.
-                  </li>
-                  <li>
-                    <strong>Validation:</strong> Performed k-fold cross-validation to ensure model robustness.
-                  </li>
-                </ul>
-              </div>
-            </div>
+    {/* Model Architecture */}
+    <div className="flex flex-col md:flex-row items-start mb-12 md:mb-20">
+      <div className="bg-green-500 text-white font-bold text-lg sm:text-xl px-6 py-3 rounded-md shadow-lg text-center flex-shrink-0 w-full md:w-60 mb-6 md:mb-0">
+        Model Architecture
+      </div>
+      <div className="h-1 md:h-auto md:w-1 bg-gray-500 mx-0 md:mx-8"></div>
+      <div className="text-base sm:text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">
+          A robust linear regression model formed the backbone of this project, enhanced with:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li><strong>Polynomial Regression:</strong> Captured non-linear relationships in predictors.</li>
+          <li><strong>Splines:</strong> Improved fit for variables like budget and star rankings.</li>
+          <li><strong>Interaction Terms:</strong> Explored dependencies between genres and budget.</li>
+          <li><strong>Validation:</strong> Performed k-fold cross-validation to ensure model robustness.</li>
+        </ul>
+      </div>
+    </div>
 
-            {/* Loss Functions */}
-            <div className="flex items-start mb-20">
-              <div className="bg-red-500 text-white text-xl font-bold px-6 py-3 rounded-md shadow-lg w-60 text-center flex-shrink-0">
-                Evaluation Metrics
-              </div>
-              <div className="h-auto w-1 bg-gray-500 mx-8"></div>
-              <div className="text-xl text-gray-300 flex-1">
-                <p className="mb-4">The following metrics were used to evaluate the model:</p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li><strong>R-Squared:</strong> Assessed goodness-of-fit for the training data.</li>
-                  <li><strong>MSE:</strong> Measured prediction error on validation datasets.</li>
-                  <li><strong>Residual Analysis:</strong> Checked for non-linearities and heteroskedasticity.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+    {/* Evaluation Metrics */}
+    <div className="flex flex-col md:flex-row items-start mb-12 md:mb-20">
+      <div className="bg-red-500 text-white text-lg sm:text-xl font-bold px-6 py-3 rounded-md shadow-lg text-center flex-shrink-0 w-full md:w-60 mb-6 md:mb-0">
+        Evaluation Metrics
+      </div>
+      <div className="h-1 md:h-auto md:w-1 bg-gray-500 mx-0 md:mx-8"></div>
+      <div className="text-base sm:text-lg md:text-xl text-gray-300 flex-1">
+        <p className="mb-4">The following metrics were used to evaluate the model:</p>
+        <ul className="list-disc list-inside space-y-2">
+          <li><strong>R-Squared:</strong> Assessed goodness-of-fit for the training data.</li>
+          <li><strong>MSE:</strong> Measured prediction error on validation datasets.</li>
+          <li><strong>Residual Analysis:</strong> Checked for non-linearities and heteroskedasticity.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-        {/* Visualizations Section */}
-        <div className="container mx-auto py-12 px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-6">Visualizations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 flex items-center justify-center h-[400px] rounded-lg overflow-hidden">
-              <Image
-                src="/assets/correlation-matrix.png"
-                alt="Correlation Matrix"
-                layout="intrinsic"
-                width={800}
-                height={600}
-                className="rounded-lg"
-              />
-            </div>
+{/* Visualizations Section */}
+<div className="container mx-auto py-12 px-4 sm:px-6">
+  <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center sm:text-left">
+    Visualizations
+  </h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="bg-gray-800 flex items-center justify-center h-[300px] sm:h-[400px] rounded-lg overflow-hidden">
+      <Image
+        src="/assets/correlation-matrix.png"
+        alt="Correlation Matrix"
+        layout="intrinsic"
+        width={800}
+        height={600}
+        className="rounded-lg"
+      />
+    </div>
+    <div className="bg-gray-800 flex items-center justify-center h-[300px] sm:h-[400px] rounded-lg overflow-hidden">
+      <Image
+        src="/assets/residual-plot.png"
+        alt="Residual Plot"
+        layout="intrinsic"
+        width={800}
+        height={600}
+        className="rounded-lg"
+      />
+    </div>
+  </div>
+  <p className="text-base sm:text-lg md:text-xl text-gray-300 mt-6 text-center sm:text-left">
+    Visualizations include correlation matrices to analyze feature relationships and residual plots to ensure the model adheres to linearity assumptions.
+  </p>
+</div>
 
-            <div className="bg-gray-800 flex items-center justify-center h-[400px] rounded-lg overflow-hidden">
-              <Image
-                src="/assets/residual-plot.png"
-                alt="Residual Plot"
-                layout="intrinsic"
-                width={800}
-                height={600}
-                className="rounded-lg"
-              />
-            </div>
-          </div>
-          <p className="text-xl text-gray-300 mt-6">
-            Visualizations include correlation matrices to analyze feature relationships and residual
-            plots to ensure the model adheres to linearity assumptions.
-          </p>
-        </div>
 
 {/* Predictions Section */}
 <div className="container mx-auto py-12 px-6">

@@ -1,24 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-import dynamic from "next/dynamic"; // Dynamic import for the Design component
-import { HiMinus } from "react-icons/hi";
+import dynamic from "next/dynamic";
+import {
+  FaHome,
+  FaProjectDiagram,
+  FaCode,
+  FaAddressCard,
+  FaInstagram,
+  FaGithub,
+  FaLinkedin,
+  FaLayerGroup,
+} from "react-icons/fa";
 
 // Dynamically import Design to avoid server-side rendering issues
 const Design = dynamic(() => import("./Design"), { ssr: false });
 
 const Banner = () => {
-  const ref = useRef<string | any>("");
   const nameRef = useRef<HTMLDivElement>(null); // Ref for the typewriter text
   const cursorRef = useRef<HTMLSpanElement>(null); // Ref for the cursor
 
   const [menu, setMenu] = useState(false);
   const [navSize, setNavSize] = useState("90px");
   const [navColor, setNavColor] = useState("transparent");
+  const [activeItem, setActiveItem] = useState("home"); // Tracks the active menu item
 
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setNavColor("#000000") : setNavColor("transparent");
-    window.scrollY > 10 ? setNavSize("90px") : setNavSize("90px");
+    window.scrollY > 10 ? setNavSize("70px") : setNavSize("90px");
   };
 
   useEffect(() => {
@@ -34,8 +43,8 @@ const Banner = () => {
       const { TextPlugin } = await import("gsap/TextPlugin");
       gsap.registerPlugin(TextPlugin);
 
-      // Typewriter Animation for Name
-      const nameText = "I'm Syed (Ammad) Sohail";
+      // Typewriter Animation
+      const nameText = "Hi, I'm Syed (Ammad) Sohail";
       if (nameRef.current) {
         gsap.to(nameRef.current, {
           text: nameText,
@@ -44,7 +53,7 @@ const Banner = () => {
         });
       }
 
-      // Blinking Cursor Animation
+      // Blinking Cursor
       if (cursorRef.current) {
         gsap.to(cursorRef.current, {
           opacity: 0,
@@ -58,114 +67,145 @@ const Banner = () => {
     loadGSAP();
   }, []);
 
+  // Sidebar menu items (editable)
+  const menuItems = [
+    { name: "Home", icon: <FaHome />, target: "home" },
+    { name: "My Data Journey", icon: <FaProjectDiagram />, target: "datajourney" },
+    { name: "Featured Works", icon: <FaCode />, target: "portfolio" },
+    { name: "Tech Stack", icon: <FaLayerGroup />, target: "testimonial" },
+    { name: "Contact", icon: <FaAddressCard />, target: "contact" },
+  ];
+
   return (
-    <div id="home" className="w-full h-[700px] relative">
-      <Design />
-      <div className="absolute left-0 top-0 w-full h-[700px] bg-black bg-opacity-10">
-        <nav
-          style={{
-            backgroundColor: navColor,
-            height: navSize,
-            transition: "all 1s",
-          }}
-          className="w-full px-16 py-6 flex justify-between fixed top-0 z-40 bg-black bg-opacity-25"
+    <div id="home" className="relative w-full h-screen overflow-hidden bg-gray-900">
+      {/* Design Background */}
+      <div className="absolute inset-0 z-0">
+        <Design />
+      </div>
+
+      {/* Navigation */}
+      <nav
+        style={{
+          backgroundColor: navColor,
+          height: navSize,
+          transition: "all 1s",
+        }}
+        className="w-full px-4 md:px-16 py-6 flex justify-between fixed top-0 z-40"
+      >
+        <h1 className="font-bodyFont text-2xl md:text-4xl text-white font-extrabold border-2 w-8 md:w-12 text-center">
+          A
+        </h1>
+        <div
+          onClick={() => setMenu(true)}
+          className="w-6 h-4 md:w-8 md:h-6 group flex flex-col items-center justify-between cursor-pointer"
         >
-          <h1 className="font-bodyFont text-4xl text-white font-extrabold border-2 w-12 text-center">
-            A
-          </h1>
-          <div
-            onClick={() => setMenu(true)}
-            className="w-8 h-6 group flex flex-col items-center justify-between cursor-pointer"
-          >
-            <span className="w-full h-[3px] bg-designColor inline-flex group-hover:w-4 duration-300"></span>
-            <span className="w-full h-[3px] bg-designColor inline-flex"></span>
-            <span className="w-full h-[3px] bg-designColor inline-flex group-hover:w-4 duration-300"></span>
-          </div>
-        </nav>
-        <div className="w-full h-full flex flex-col justify-center items-center text-white px-4">
-          <h1
-            className="text-[50px] md:text-[80px] lg:text-[100px] font-black dots-fix"
+          <span className="w-full h-[2px] md:h-[3px] bg-designColor inline-flex group-hover:w-4 duration-300"></span>
+          <span className="w-full h-[2px] md:h-[3px] bg-designColor inline-flex"></span>
+          <span className="w-full h-[2px] md:h-[3px] bg-designColor inline-flex group-hover:w-4 duration-300"></span>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="relative flex flex-col justify-center items-center h-full text-white px-4 z-30">
+        {/* Title Text with Cursor */}
+        <motion.h1
+          className="text-[6vw] md:text-[4vw] lg:text-[3.5vw] font-black text-center relative whitespace-nowrap"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{ whiteSpace: "nowrap" }} // Prevents breaking to the next line
+        >
+          <span ref={nameRef}></span>
+          <span
+            ref={cursorRef}
+            className="text-designColor"
             style={{
-              display: "inline-flex",
-              transform: "translateZ(0)", // Force GPU rendering
-              backfaceVisibility: "hidden", // Improve font rendering
-              WebkitFontSmoothing: "antialiased", // Ensure smooth fonts
-              MozOsxFontSmoothing: "grayscale", // Fix for Firefox
+              display: "inline",
+              verticalAlign: "baseline", // Align cursor to text baseline
             }}
           >
-            <div
-              ref={nameRef}
-              style={{
-                position: "relative",
-                pointerEvents: "none", // Prevent clicking on artifacts
-              }}
-            ></div>
-            <span
-              ref={cursorRef}
-              className="text-designColor ml-1 cursor"
-              style={{
-                display: "inline-block",
-                verticalAlign: "bottom", // Align with the text baseline
-                pointerEvents: "none", // Prevent clicking on artifacts
-              }}
-            >
-              |
-            </span>
-          </h1>
-          <div className="flex items-center gap-2 md:gap-6 text-base md:text-xl font-bold bg-designColor px-6 py-3">
-            <h2 className="tracking-[4px]">DATA SCIENTIST</h2>
-            <HiMinus className="text-2xl rotate-90" />
-            <h2 className="tracking-[4px]">PHOTOGRAPHER</h2>
-            <HiMinus className="text-2xl rotate-90" />
-            <h2 className="tracking-[4px]">TABLE TENNIS PLAYER</h2>
-          </div>
-        </div>
-      </div>
-      {menu && (
-        <div
-          ref={(node) => (ref.current = node)}
-          className="w-full h-screen bg-black bg-opacity-40 fixed top-0 right-0 flex justify-end z-50"
+            |
+          </span>
+        </motion.h1>
+
+        {/* Subtitle Roles */}
+        <motion.div
+          className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-6 text-lg md:text-base font-bold bg-yellow-400 text-black px-4 py-2 md:px-6 md:py-3 rounded-full shadow-lg z-30"
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
         >
-          <motion.div
-            initial={{ x: 500, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="w-full md:w-[60%] lg:w-[40%] h-full bg-[#0F1113] text-white flex items-center justify-center"
-          >
-            <div className="w-4/5 px-12">
-              <ul className="flex flex-col gap-2">
-                <Link
-                  to="home"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                  onClick={() => setMenu(false)}
-                >
-                  <li className="text-xl font-semibold text-gray-300 hover:text-white duration-300 cursor-pointer">
-                    Home
-                  </li>
-                </Link>
-                {/* Add other links here */}
-              </ul>
-              <div className="text-lg font-thin mt-32">
-                <p>For project inquiries</p>
-                <p>
-                  or say 'Hello' -{" "}
-                  <span className="font-semibold text-designColor">
-                    reactjsbd@gmail.com
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="w-1/5 h-full border-l-[1px] text-center flex items-center justify-center">
-              <button
-                onClick={() => setMenu(false)}
-                className="text-3xl font-black text-designColor"
+          {["DATA SCIENTIST", "PHOTOGRAPHER", "TABLE TENNIS PLAYER"].map(
+            (role, idx) => (
+              <motion.h2
+                key={idx}
+                className="tracking-[2px] md:tracking-[4px] hover:text-black transition-all"
+                whileHover={{ scale: 1.1 }}
               >
-                X
-              </button>
-            </div>
+                {role}
+              </motion.h2>
+            )
+          )}
+        </motion.div>
+      </div>
+
+      {/* Sidebar Menu */}
+      {menu && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-end">
+          {/* Sidebar Container */}
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative w-[250px] h-full bg-gradient-to-b from-[rgba(255,255,255,0.1)] to-[rgba(0,0,0,0.3)] backdrop-blur-lg shadow-xl rounded-l-2xl flex flex-col items-center py-8 px-4 z-20"
+          >
+            {/* Close Button */}
+            <motion.div
+              onClick={() => setMenu(false)}
+              className="text-yellow-400 text-2xl mb-12 hover:text-yellow-300 transition-transform transform hover:scale-125 cursor-pointer"
+              whileHover={{ rotate: 90 }}
+            >
+              ✖
+            </motion.div>
+
+            {/* Sidebar Menu Items */}
+            <ul className="space-y-8 flex flex-col items-start w-full pl-8 mt-12">
+              {menuItems.map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  className={`flex items-center gap-4 cursor-pointer transition-all ${
+                    activeItem === item.target
+                      ? "text-blue-500"
+                      : "text-white hover:text-yellow-400"
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.2, duration: 0.5 }}
+                >
+                  <span
+                    className={`text-2xl ${
+                      activeItem === item.target
+                        ? "text-blue-500"
+                        : "text-yellow-400"
+                    }`}
+                  >
+                    {item.icon}
+                  </span>
+                  <Link
+                    to={item.target}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    onClick={() => {
+                      setActiveItem(item.target);
+                      setMenu(false);
+                    }}
+                    className="text-lg md:text-xl font-bold tracking-wide"
+                  >
+                    {item.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
           </motion.div>
         </div>
       )}
