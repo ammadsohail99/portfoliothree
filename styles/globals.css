@@ -13,12 +13,12 @@
 }
 
 /* Global Styles */
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito Sans', sans-serif;
-  overflow-x: hidden;
+  min-height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box; /* Ensure consistent box-sizing */
 }
 
 h1, h2, h3, h4, h5, h6 {
