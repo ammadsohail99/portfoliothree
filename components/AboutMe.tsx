@@ -88,7 +88,7 @@ const AboutMe = () => {
             During my Bachelor's in Mechanical Engineering degree, I discovered my passion
             for coding while designing a{" "}
             <span className="text-blue-400 font-semibold">
-              4 DOF robotic manipulator
+              4 Degree of Freedom (DOF) robotic manipulator
             </span>{" "}
             in MATLAB. This manipulator, with its unique half-doughnut task
             space, introduced me to the world of programming and sparked a
